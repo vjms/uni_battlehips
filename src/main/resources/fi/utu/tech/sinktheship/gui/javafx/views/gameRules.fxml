@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="root" alignment="CENTER" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.sinktheship.gui.javafx.controllers.GameRulesController">
+   <children>
+      <GridPane alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="230.0" scaleShape="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="94.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="126.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label styleClass="text" text="Kentän koko" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <VBox alignment="CENTER_RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+               <children>
+                  <Label text="Lentotukialukset" />
+                  <Label styleClass="subtext" text="Pituus: 5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Taistelulaiva" />
+                  <Label styleClass="subtext" text="Pituus: 4" />
+               </children>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" GridPane.rowIndex="3">
+               <children>
+                  <Label text="Risteilijä" />
+                  <Label styleClass="subtext" text="Pituus: 3" />
+               </children>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" GridPane.rowIndex="4">
+               <children>
+                  <Label text="Sukellusvene" />
+                  <Label styleClass="subtext" text="Pituus: 3" />
+               </children>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" GridPane.rowIndex="5">
+               <children>
+                  <Label text="Hävittäjä" />
+                  <Label styleClass="subtext" text="Pituus: 2" />
+               </children>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </VBox>
+            <Label styleClass="text" text="Pikapeli" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <HBox alignment="CENTER" GridPane.columnIndex="1">
+               <children>
+                  <Slider fx:id="gridSizeSlider" blockIncrement="1.0" majorTickUnit="1.0" max="20.0" min="5.0" minorTickCount="1" snapToTicks="true" value="15.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="gridSizeIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="15 x 15" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Slider fx:id="carrierCountSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="0.0" minorTickCount="1" snapToTicks="true" value="1.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="carrierCountIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="1" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Slider fx:id="battleshipCountSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="0.0" minorTickCount="1" snapToTicks="true" value="2.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="battleshipCountIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="2" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Slider fx:id="cruiserCountSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="0.0" minorTickCount="1" snapToTicks="true" value="3.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="cruiserCountIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="3" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Slider fx:id="submarineCountSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="0.0" minorTickCount="1" snapToTicks="true" value="4.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="submarineCountIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="4" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <Slider fx:id="destroyerCountSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="0.0" minorTickCount="1" snapToTicks="true" value="5.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="destroyerCountIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="5" />
+               </children>
+            </HBox>
+            <CheckBox fx:id="fastGameModeCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <children>
+                  <Slider fx:id="timeLimitSlider" blockIncrement="5.0" majorTickUnit="5.0" max="30.0" min="0.0" minorTickCount="0" snapToTicks="true">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="timeLimitIndicator" alignment="CENTER" minWidth="42.0" styleClass="text" text="0:00" />
+               </children>
+            </HBox>
+            <Label text="Vuoron aikaraja" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+      <Label fx:id="rulesOkLabel" text="Label" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+   </children>
+</VBox>

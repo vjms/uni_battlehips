@@ -1,0 +1,184 @@
+* {
+	-fontfamily: Helvetica;
+	-fontcolor: white;
+	-hovercolor: #00000050;
+}
+
+.background {
+	-fx-background-color: #405079;
+}
+
+.topBar {
+	-fx-background-color: #00000010;
+}
+
+.title {
+	-fx-text-fill: -fontcolor;
+	-fx-font-size: 10px;
+	-fx-font-family: -fontfamily;
+}
+
+.label {
+	-fx-text-fill: -fontcolor;
+	-fx-font-family: -fontfamily;
+	-fx-font-size: 12px;
+}
+
+.subtext {
+	-fx-font-size: 10px;
+}
+
+.guidetext {
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+}
+
+.gamestatustext {
+	-fx-font-size: 60px;
+	-fx-font-weight: bold;
+}
+
+.gameinfotext {
+	-fx-font-size: 30px;
+	-fx-font-weight: bold;
+}
+
+.victorytext {
+	-fx-font-size: 80px;
+	-fx-font-weight: bold;
+}
+
+.victorybox {
+	-fx-background-radius: 20;
+	-fx-background-color: #00000070;
+}
+
+.name {
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+}
+
+.text-field {
+	-fx-background-color: transparent;
+	-fx-font-family: -fontfamily;
+	-fx-text-fill: -fontcolor;
+}
+
+.text-field:hover {
+	-fx-background-color: -hovercolor;
+}
+
+.button {
+	-fx-text-fill: -fontcolor;
+	-fx-font-family: -fontfamily;
+	-fx-font-size: 12px;
+	-fx-background-color: #00000020;
+	-fx-border-color: #00000030;
+	-fx-border-width: 1;
+	-fx-border-style: solid;
+	-fx-border-radius: 4;
+}
+
+.button:hover {
+	-fx-background-color: -hovercolor;
+}
+
+.soundbutton {
+	-fx-font-size: 40px;
+	-fx-border-width: 0;
+	-fx-background-color: transparent;
+}
+
+.soundbutton:hover {
+	-fx-background-color: transparent;
+}
+
+.controlButton {
+	-fx-background-color: transparent;
+	-fx-text-fill: -fontcolor;
+	-fx-font-family: -fontfamily;
+	-fx-font-size: 12px;
+	-fx-border-width: 0;
+}
+
+.gridbackground {
+	-fx-background-color: #00000025;
+}
+
+.tile {
+	-fx-background-color: #00000025;
+	-fx-border-color: #000000;
+	-fx-border-radius: 1;
+}
+
+.tile-interactive:hover {
+	-fx-background-color: #FFFFFF50;
+}
+
+.chat {
+	-fx-background-color: #00000050;
+	-fx-font-family: -fontfamily;
+}
+
+.chatarea:hover {
+	-fx-cursor: default;
+}
+
+.text-area {
+	-fx-background-color: #00000020;
+	-fx-text-fill: -fontcolor;
+}
+
+.text-area .scroll-pane {
+	-fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport {
+	-fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .content {
+	fx-background-color: transparent;
+}
+
+.chatarea .content {
+	-fx-font-family: -fontfamily;
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+	-fx-border-style: none;
+	-fx-border-width: 0;
+}
+
+.chatarea:focused .content {
+	-fx-border-color: transparent;
+	-fx-border-style: none;
+	-fx-border-width: 0;
+}
+
+.list-view {
+	-fx-background-color: transparent;
+}
+
+.list-cell:even {
+	-fx-background-color: #00000020;
+}
+
+.list-cell:odd {
+	-fx-background-color: #00000030;
+}
+
+.list-cell:selected {
+	-fx-background-color: #00000080;
+}
+
+.list-cell:empty {
+	-fx-background-color: transparent;
+}
+
+.serverlist {
+	-fx-background-color: #00000020;
+}
+
+.serverlistheader {
+	-fx-background-color: #00000050;
+}

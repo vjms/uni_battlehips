@@ -1,0 +1,399 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- See https://tech.utugit.fi/soft/tools/lectures/tko8971/build/ -->
+    
+    <!-- ==== START OF SIMPLE CONFIGURATION ==== -->
+
+    <!-- The three parts of the artifact name -->
+    <groupId>fi.utu.tech</groupId>
+    <artifactId>laivanupotuspeli</artifactId>
+    <version>1.0</version>
+    
+    <!-- Additional information about the project -->
+    <name>JavaFX project template</name>
+    <url>https://gitlab.utu.fi/tech/education/gui/template-javafx</url>
+
+    <!-- We want to generate a jar. Don't change. -->
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- Configures the main class for this project (i.e. what to launch) -->
+        <project.mainclass>fi.utu.tech.sinktheship.Main</project.mainclass>
+
+        <!-- The source encoding should always be utf-8. Don't change. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Version numbers for various modules -->
+        <jdk.version>11</jdk.version>
+        <jqwik.version>1.3.10</jqwik.version>
+        <junit.version>5.7.0</junit.version>
+        <junitplatform.version>1.7.0</junitplatform.version>
+        <javafx.version>15.0.1</javafx.version>
+    </properties>
+
+    <!-- ==== END OF SIMPLE CONFIGURATION ==== -->
+    
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter</name>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <!-- UTU repository -->
+        <repository>
+            <id>ftdev</id>
+            <name>ftdev</name>
+            <url>https://ftdev.utu.fi/maven2</url>
+        </repository>
+    </repositories>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>${junitplatform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.jqwik</groupId>
+            <artifactId>jqwik</artifactId>
+            <version>${jqwik.version}</version>
+            <scope>test</scope>
+        </dependency><!--
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-migrationsupport</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junitplatform.version}</version>
+            <scope>test</scope>
+        </dependency> -->
+        
+        <!-- JavaFX (remove if not needed to speed up dep downloads)-->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Make a 'fat' jar, that is, jar that contains all its dependencies and runs as is.
+                 See: https://stackoverflow.com/a/57691362 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.class</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>${project.mainclass}</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Run this app with exec:java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>${project.mainclass}</mainClass>
+                    <arguments>
+                        <argument>arg1</argument>
+                        <argument>arg2</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+            <!-- Make the packaged jar executable -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <!-- DO NOT include log4j.properties file in your Jar -->
+                    <excludes>
+                        <exclude>**/log4j.properties</exclude>
+                    </excludes>
+                    <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <mainClass>${project.mainclass}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- JDK source/target versions -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Also create a jar of the sources -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- JShell (jshell:run) -->
+            <plugin>
+                <groupId>com.github.johnpoth</groupId>
+                <artifactId>jshell-maven-plugin</artifactId>
+                <version>1.3</version>
+            </plugin>
+
+            <!-- UTU DbC Javadoc annotations -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <tags>
+                        <tag>
+                            <name>toDo</name>
+                            <placement>a</placement>
+                            <head>To&nbsp;do:</head>
+                        </tag>
+                        <tag>
+                            <name>classInvariant</name>
+                            <placement>t</placement>
+                            <head>Class&nbsp;invariant:</head>
+                        </tag>
+                        <tag>
+                            <name>classInvariantProtected</name>
+                            <placement>t</placement>
+                            <head>Protected&nbsp;class&nbsp;invariant:</head>
+                        </tag>
+                        <tag>
+                            <name>classInvariantPrivate</name>
+                            <placement>t</placement>
+                            <head>Private&nbsp;class&nbsp;invariant:</head>
+                        </tag>
+                        <tag>
+                            <name>abstractionFunction</name>
+                            <placement>t</placement>
+                            <head>Abstraction&nbsp;function:</head>
+                        </tag>
+                        <tag>
+                            <name>pre</name>
+                            <placement>cm</placement>
+                            <head>Precondition:</head>
+                        </tag>
+                        <tag>
+                            <name>post</name>
+                            <placement>cm</placement>
+                            <head>Postcondition:</head>
+                        </tag>
+                        <tag>
+                            <name>postProtected</name>
+                            <placement>cm</placement>
+                            <head>Protected&nbsp;postcondition:</head>
+                        </tag>
+                        <tag>
+                            <name>postPrivate</name>
+                            <placement>cm</placement>
+                            <head>Private&nbsp;postcondition:</head>
+                        </tag>
+                        <tag>
+                            <name>time</name>
+                            <placement>cmf</placement>
+                            <head>Time&nbsp;complexity:</head>
+                        </tag>
+                        <tag>
+                            <name>space</name>
+                            <placement>cmf</placement>
+                            <head>Space&nbsp;complexity:</head>
+                        </tag>
+                        <tag>
+                            <name>correspondence</name>
+                            <placement>a</placement>
+                            <head>Correspondence:</head>
+                        </tag>
+                        <tag>
+                            <name>download</name>
+                            <placement>a</placement>
+                            <head>Download:</head>
+                        </tag>
+                    </tags>
+                    <show>protected</show>
+                    <failOnError>false</failOnError>
+                    <sourceFileExcludes>
+                        <sourceFileExclude>**/module-info.java</sourceFileExclude>
+                    </sourceFileExcludes>
+                </configuration>
+            </plugin>
+
+            <!-- JUnit & JQwik test integration -->
+
+            <!-- junit-platform-maven-plugin: supports modular tests
+                 maven-surefire-plugin: non-modular tests
+
+                 Modular testing works via command line mvn, but is
+                 still broken in Eclipse due to this
+                 https://bugs.eclipse.org/bugs/show_bug.cgi?id=520667
+
+            <plugin>
+                <groupId>de.sormuras.junit</groupId>
+                <artifactId>junit-platform-maven-plugin</artifactId>
+                <version>1.0.0-M5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <executor>JAVA</executor>
+                </configuration>
+            </plugin>-->
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+
+            <!-- javafx:jlink:
+                 https://github.com/openjfx/javafx-maven-plugin
+                 Use 'mvn package' instead if you don't need jlink.
+
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.3</version>
+                <configuration>
+                    <mainClass>${project.mainclass}</mainClass>
+                </configuration>
+            </plugin> -->
+
+        </plugins>
+        <extensions>
+            <!-- Enables the use of SSH for deployments -->
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>3.4.2</version>
+            </extension>
+        </extensions>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>ftdev</id>
+            <name>UTU tech ftdev repository</name>
+            <url>scp://localhost:2222/var/www/maven2</url>
+        </repository>
+    </distributionManagement>
+</project>

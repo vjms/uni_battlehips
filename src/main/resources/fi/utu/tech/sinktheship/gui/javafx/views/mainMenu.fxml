@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.sinktheship.gui.javafx.controllers.MainMenuController">
+   <children>
+      <VBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Button fx:id="createGameButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCreateGameAction" prefHeight="40.0" prefWidth="200.0" text="Luo Peli" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="joinGameButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onJoinGameAction" prefHeight="40.0" prefWidth="200.0" text="Liity Peliin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="exitGameButton" mnemonicParsing="false" onAction="#onExitGameAction" prefHeight="40.0" prefWidth="200.0" text="Poistu Pelistä" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <TextField fx:id="nameField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" onAction="#onNameFieldAction" prefWidth="240.0" promptText="Anna nimesi" styleClass="name" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets bottom="200.0" />
+         </StackPane.margin>
+      </TextField>
+   </children>
+</StackPane>
